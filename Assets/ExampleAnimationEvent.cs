@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+// This C# function can be called by an Animation Event
 using UnityEngine;
+using System.Collections;
 using Kvant; 
 
 public class ExampleAnimationEvent : MonoBehaviour
 {
+    public GameObject spray; 
 
-    public GameObject spray;
     Spray sprayParticle;
-    // Start is called before the first frame update
+
+
     private void Start()
     {
-        sprayParticle = spray.GetComponent<Spray>();  
+        sprayParticle = spray.GetComponent<Spray>(); 
     }
 
-    // Update is called once per frame
+
     public void Spray(float duration)
     {
         Debug.Log("Spray Particle");
@@ -22,18 +23,18 @@ public class ExampleAnimationEvent : MonoBehaviour
     }
 
 
-
     IEnumerator SprayForDuration(float duration)
     {
         sprayParticle.throttle = 0.5f;
-        Debug.Log("SprayForDuration " + duration);
+        Debug.Log("SprayForDuration  " + duration);
+
         yield return new WaitForSeconds(duration);
-        sprayParticle.throttle = 0.0f;
+
+        sprayParticle.throttle = 0.0f; 
     }
-    public void  PrintEvent(string s)
+
+    public void PrintEvent(string s)
     {
         Debug.Log("PrintEvent: " + s + " called at: " + Time.time);
     }
-
-
 }
